@@ -1,0 +1,55 @@
+description:
+  human:
+    en_US: Compute Taylor/Maclaurin series expansion of a mathematical expression using SymPy.
+    zh_Hans: 用 SymPy 计算数学表达式的泰勒/麦克劳林级数展开。
+  llm: Compute the Taylor series expansion of an expression around a given point. Returns the series with remainder term O(x^n) and the polynomial approximation. Use 'oo' for point only when the function supports it. Examples — expression='sin(x)', point='0', order=5; expression='exp(x)', point='0', order=6; expression='1/(1-x)', variable='x', point='0', order=5.
+extra:
+  python:
+    source: tools/sympy_series.py
+identity:
+  author: xujing
+  label:
+    en_US: Series Expansion (SymPy)
+    zh_Hans: 级数展开（SymPy）
+  name: sympy_series
+parameters:
+- form: llm
+  human_description:
+    en_US: "Expression to expand as a series (e.g. 'sin(x)', 'exp(x)', 'log(1+x)', 'cos(x)')."
+    zh_Hans: "要级数展开的表达式（如 'sin(x)'，'exp(x)'，'log(1+x)'，'cos(x)'）。"
+  label:
+    en_US: Expression
+    zh_Hans: 表达式
+  name: expression
+  required: true
+  type: string
+- form: llm
+  human_description:
+    en_US: "Variable for the series expansion (e.g. 'x', 't'). Default: x."
+    zh_Hans: "级数展开的变量（如 'x'，'t'），默认为 x。"
+  label:
+    en_US: Variable
+    zh_Hans: 变量
+  name: variable
+  required: false
+  type: string
+- form: llm
+  human_description:
+    en_US: "Expansion point (e.g. '0' for Maclaurin, '1', 'pi'). Default: 0."
+    zh_Hans: "展开点（如 '0' 为麦克劳林展开，'1'，'pi'），默认为 0。"
+  label:
+    en_US: Point
+    zh_Hans: 展开点
+  name: point
+  required: false
+  type: string
+- form: llm
+  human_description:
+    en_US: "Number of terms / order of expansion (e.g. '6' gives terms up to x^5). Default: 6."
+    zh_Hans: "展开项数/阶数（如 '6' 展开到 x^5 项），默认为 6。"
+  label:
+    en_US: Order
+    zh_Hans: 阶数
+  name: order
+  required: false
+  type: string

@@ -1,0 +1,45 @@
+description:
+  human:
+    en_US: Compute the derivative of a mathematical expression using SymPy.
+    zh_Hans: 用 SymPy 对数学表达式求导。
+  llm: Differentiate a mathematical expression symbolically. Supports partial derivatives, higher-order derivatives. Returns result and LaTeX. Examples — expression='sin(x)*x**2', variable='x', order='2'.
+extra:
+  python:
+    source: tools/sympy_diff.py
+identity:
+  author: xujing
+  label:
+    en_US: Differentiate (SymPy)
+    zh_Hans: 求导（SymPy）
+  name: sympy_diff
+parameters:
+- form: llm
+  human_description:
+    en_US: "Mathematical expression to differentiate (e.g. 'sin(x)*x**2', 'exp(-x**2)', 'x**3 + 2*x')."
+    zh_Hans: "要求导的数学表达式（如 'sin(x)*x**2'，'exp(-x**2)'，'x**3 + 2*x'）。"
+  label:
+    en_US: Expression
+    zh_Hans: 表达式
+  name: expression
+  required: true
+  type: string
+- form: llm
+  human_description:
+    en_US: "Variable to differentiate with respect to (e.g. 'x', 't'). Default: x."
+    zh_Hans: "对哪个变量求导（如 'x'，'t'），默认为 x。"
+  label:
+    en_US: Variable
+    zh_Hans: 变量
+  name: variable
+  required: false
+  type: string
+- form: llm
+  human_description:
+    en_US: "Order of the derivative (e.g. '1' for first derivative, '2' for second). Default: 1."
+    zh_Hans: "导数阶数（如 '1' 表示一阶，'2' 表示二阶），默认为 1。"
+  label:
+    en_US: Order
+    zh_Hans: 阶数
+  name: order
+  required: false
+  type: string

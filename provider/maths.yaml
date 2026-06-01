@@ -18,3 +18,10 @@ identity:
   - productivity
 tools:
 - tools/eval_expression.yaml
+- tools/sympy_solve.yaml
+- tools/sympy_diff.yaml
+- tools/sympy_integrate.yaml
+- tools/sympy_limit.yaml
+- tools/sympy_simplify.yaml
+- tools/sympy_series.yaml
+- tools/sympy_dsolve.yaml

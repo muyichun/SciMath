@@ -1,0 +1,35 @@
+description:
+  human:
+    en_US: Solve equations or systems of equations symbolically using SymPy. Returns exact solutions.
+    zh_Hans: 用 SymPy 符号求解方程或方程组，返回精确解。
+  llm: Solve one or more equations symbolically. Supports polynomial, transcendental, and systems of equations. Input equations as 'lhs = rhs' or just 'expr' (implying = 0). Separate multiple equations with semicolons. Returns exact symbolic solutions and LaTeX.
+extra:
+  python:
+    source: tools/sympy_solve.py
+identity:
+  author: xujing
+  label:
+    en_US: Solve Equations (SymPy)
+    zh_Hans: 解方程（SymPy）
+  name: sympy_solve
+parameters:
+- form: llm
+  human_description:
+    en_US: "Equation(s) to solve. Use '=' for equality (e.g. 'x**2 - 4 = 0'). Separate multiple equations with semicolons (e.g. 'x + y = 3; x - y = 1')."
+    zh_Hans: "要求解的方程，用 '=' 表示等式（如 'x**2 - 4 = 0'）。多个方程用分号分隔（如 'x + y = 3; x - y = 1'）。"
+  label:
+    en_US: Equations
+    zh_Hans: 方程
+  name: equations
+  required: true
+  type: string
+- form: llm
+  human_description:
+    en_US: "Variable(s) to solve for (e.g. 'x' or 'x; y'). Leave empty to auto-detect."
+    zh_Hans: "求解的变量（如 'x' 或 'x; y'），留空自动检测。"
+  label:
+    en_US: Variables
+    zh_Hans: 变量
+  name: variables
+  required: false
+  type: string

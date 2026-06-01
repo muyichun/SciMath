@@ -1,0 +1,68 @@
+description:
+  human:
+    en_US: Compute the limit of a mathematical expression using SymPy.
+    zh_Hans: 用 SymPy 求数学表达式的极限。
+  llm: Compute a symbolic limit as a variable approaches a point. Supports one-sided and two-sided limits, including limits at infinity. Use 'oo' for positive infinity, '-oo' for negative infinity. Examples — expression='sin(x)/x', variable='x', point='0'; expression='(1+1/x)**x', variable='x', point='oo'.
+extra:
+  python:
+    source: tools/sympy_limit.py
+identity:
+  author: xujing
+  label:
+    en_US: Limit (SymPy)
+    zh_Hans: 求极限（SymPy）
+  name: sympy_limit
+parameters:
+- form: llm
+  human_description:
+    en_US: "Expression to find the limit of (e.g. 'sin(x)/x', '(1 + 1/n)**n', 'exp(x)/x**2')."
+    zh_Hans: "要求极限的表达式（如 'sin(x)/x'，'(1 + 1/n)**n'，'exp(x)/x**2'）。"
+  label:
+    en_US: Expression
+    zh_Hans: 表达式
+  name: expression
+  required: true
+  type: string
+- form: llm
+  human_description:
+    en_US: "Variable approaching the limit point (e.g. 'x', 'n'). Default: x."
+    zh_Hans: "趋近极限点的变量（如 'x'，'n'），默认为 x。"
+  label:
+    en_US: Variable
+    zh_Hans: 变量
+  name: variable
+  required: false
+  type: string
+- form: llm
+  human_description:
+    en_US: "The point the variable approaches (e.g. '0', 'oo', '-oo', 'pi/2'). Required."
+    zh_Hans: "变量趋近的点（如 '0'，'oo'，'-oo'，'pi/2'），必填。"
+  label:
+    en_US: Point
+    zh_Hans: 趋近点
+  name: point
+  required: true
+  type: string
+- form: llm
+  human_description:
+    en_US: "Direction of approach: '+' (from right), '-' (from left), '+-' (two-sided). Default: +-."
+    zh_Hans: "趋近方向：'+' 右极限，'-' 左极限，'+-' 双侧极限，默认 '+-'。"
+  label:
+    en_US: Direction
+    zh_Hans: 方向
+  name: direction
+  required: false
+  type: select
+  options:
+  - value: "+-"
+    label:
+      en_US: "Two-sided (+-)"
+      zh_Hans: "双侧 (+-)"
+  - value: "+"
+    label:
+      en_US: "Right-side (+)"
+      zh_Hans: "右极限 (+)"
+  - value: "-"
+    label:
+      en_US: "Left-side (-)"
+      zh_Hans: "左极限 (-)"

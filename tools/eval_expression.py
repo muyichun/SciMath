@@ -1,6 +1,7 @@
 import logging
 from typing import Any, Generator
 
+from math import pi
 import numexpr as ne
 from dify_plugin import Tool
 from dify_plugin.entities.tool import ToolInvokeMessage

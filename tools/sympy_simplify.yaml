@@ -1,0 +1,76 @@
+description:
+  human:
+    en_US: Simplify, factor, expand, or transform a mathematical expression using SymPy.
+    zh_Hans: 用 SymPy 化简、因式分解、展开或变换数学表达式。
+  llm: Apply algebraic transformations to a mathematical expression. Operations include general simplification, polynomial factoring, expansion, partial fractions, and trigonometric simplification. Returns the transformed expression and LaTeX. Examples — factor 'x**2 - 4'; simplify 'sin(x)**2 + cos(x)**2'; apart '1/(x**2-1)', variable='x'.
+extra:
+  python:
+    source: tools/sympy_simplify.py
+identity:
+  author: xujing
+  label:
+    en_US: Simplify / Factor (SymPy)
+    zh_Hans: 化简/因式分解（SymPy）
+  name: sympy_simplify
+parameters:
+- form: llm
+  human_description:
+    en_US: "Mathematical expression to transform (e.g. 'x**2 - 4', 'sin(x)**2 + cos(x)**2', '(x+1)**3')."
+    zh_Hans: "要变换的数学表达式（如 'x**2 - 4'，'sin(x)**2 + cos(x)**2'，'(x+1)**3'）。"
+  label:
+    en_US: Expression
+    zh_Hans: 表达式
+  name: expression
+  required: true
+  type: string
+- form: llm
+  human_description:
+    en_US: "Transformation to apply. Default: simplify."
+    zh_Hans: "要应用的变换，默认为 simplify（化简）。"
+  label:
+    en_US: Operation
+    zh_Hans: 操作
+  name: operation
+  required: false
+  type: select
+  options:
+  - value: simplify
+    label:
+      en_US: "Simplify (general)"
+      zh_Hans: "化简（通用）"
+  - value: factor
+    label:
+      en_US: "Factor (factorize polynomial)"
+      zh_Hans: "因式分解"
+  - value: expand
+    label:
+      en_US: "Expand (distribute)"
+      zh_Hans: "展开"
+  - value: cancel
+    label:
+      en_US: "Cancel (reduce rational)"
+      zh_Hans: "约分（有理式）"
+  - value: apart
+    label:
+      en_US: "Apart (partial fractions)"
+      zh_Hans: "部分分式分解"
+  - value: trigsimp
+    label:
+      en_US: "Trigsimp (trig simplification)"
+      zh_Hans: "三角化简"
+  - value: radsimp
+    label:
+      en_US: "Radsimp (rationalize denominator)"
+      zh_Hans: "有理化分母"
+  - value: powsimp
+    label:
+      en_US: "Powsimp (simplify powers)"
+      zh_Hans: "幂次化简"
+  - value: expand_trig
+    label:
+      en_US: "Expand trig functions"
+      zh_Hans: "展开三角函数"
+  - value: nsimplify
+    label:
+      en_US: "Nsimplify (numerical simplification)"
+      zh_Hans: "数值化简"

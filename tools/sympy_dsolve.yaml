@@ -1,0 +1,45 @@
+description:
+  human:
+    en_US: Solve ordinary differential equations (ODE) symbolically using SymPy.
+    zh_Hans: 用 SymPy 符号求解常微分方程（ODE）。
+  llm: "Solve an ordinary differential equation symbolically. Write the ODE using SymPy notation: use f(x).diff(x) for f'(x), f(x).diff(x,2) for f''(x). The equation represents ODE=0 by default, or use '=' to specify both sides. Optionally provide initial conditions. Examples — first order: ode='f(x).diff(x) - f(x)', func='f(x)'; second order: ode='f(x).diff(x,2) + f(x)', func='f(x)'; with ICs: ics='f(0)=1; f(x).diff(x).subs(x,0)=0'."
+extra:
+  python:
+    source: tools/sympy_dsolve.py
+identity:
+  author: xujing
+  label:
+    en_US: Solve ODE (SymPy)
+    zh_Hans: 解微分方程（SymPy）
+  name: sympy_dsolve
+parameters:
+- form: llm
+  human_description:
+    en_US: "ODE in SymPy notation. Use f(x).diff(x) for f'(x), f(x).diff(x,2) for f''(x). E.g. 'f(x).diff(x) - f(x)' means f'=f; 'f(x).diff(x,2) + f(x)' means f''+f=0."
+    zh_Hans: "用 SymPy 符号表示的微分方程。f(x).diff(x) 表示 f'(x)，f(x).diff(x,2) 表示 f''(x)。如 'f(x).diff(x) - f(x)' 表示 f'=f。"
+  label:
+    en_US: ODE
+    zh_Hans: 微分方程
+  name: ode
+  required: true
+  type: string
+- form: llm
+  human_description:
+    en_US: "The dependent function to solve for (e.g. 'f(x)', 'y(t)'). Default: f(x)."
+    zh_Hans: "要求解的因变量函数（如 'f(x)'，'y(t)'），默认为 f(x)。"
+  label:
+    en_US: Function
+    zh_Hans: 函数
+  name: func
+  required: false
+  type: string
+- form: llm
+  human_description:
+    en_US: "Initial or boundary conditions, semicolon-separated (e.g. 'f(0)=1; f(x).diff(x).subs(x,0)=0'). Leave empty for general solution."
+    zh_Hans: "初始或边界条件，用分号分隔（如 'f(0)=1; f(x).diff(x).subs(x,0)=0'），留空求通解。"
+  label:
+    en_US: Initial Conditions
+    zh_Hans: 初始条件
+  name: ics
+  required: false
+  type: string

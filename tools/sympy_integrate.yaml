@@ -1,0 +1,55 @@
+description:
+  human:
+    en_US: Compute definite or indefinite integrals symbolically using SymPy.
+    zh_Hans: 用 SymPy 计算定积分或不定积分。
+  llm: "Compute a symbolic integral. For indefinite integrals, leave bounds empty. For definite integrals, provide lower_bound and upper_bound. Use 'oo' for infinity. Examples — indefinite: expression='x**2', variable='x'; definite: expression='sin(x)', variable='x', lower_bound='0', upper_bound='pi'."
+extra:
+  python:
+    source: tools/sympy_integrate.py
+identity:
+  author: xujing
+  label:
+    en_US: Integrate (SymPy)
+    zh_Hans: 积分（SymPy）
+  name: sympy_integrate
+parameters:
+- form: llm
+  human_description:
+    en_US: "Expression to integrate (e.g. 'x**2', 'sin(x)*exp(x)', '1/(1+x**2)')."
+    zh_Hans: "要积分的表达式（如 'x**2'，'sin(x)*exp(x)'，'1/(1+x**2)'）。"
+  label:
+    en_US: Expression
+    zh_Hans: 表达式
+  name: expression
+  required: true
+  type: string
+- form: llm
+  human_description:
+    en_US: "Integration variable (e.g. 'x', 't'). Default: x."
+    zh_Hans: "积分变量（如 'x'，'t'），默认为 x。"
+  label:
+    en_US: Variable
+    zh_Hans: 积分变量
+  name: variable
+  required: false
+  type: string
+- form: llm
+  human_description:
+    en_US: "Lower bound for definite integral (e.g. '0', '-oo', 'pi/2'). Leave empty for indefinite integral."
+    zh_Hans: "定积分下限（如 '0'，'-oo'，'pi/2'），不定积分留空。"
+  label:
+    en_US: Lower Bound
+    zh_Hans: 下限
+  name: lower_bound
+  required: false
+  type: string
+- form: llm
+  human_description:
+    en_US: "Upper bound for definite integral (e.g. '1', 'oo', 'pi'). Leave empty for indefinite integral."
+    zh_Hans: "定积分上限（如 '1'，'oo'，'pi'），不定积分留空。"
+  label:
+    en_US: Upper Bound
+    zh_Hans: 上限
+  name: upper_bound
+  required: false
+  type: string
