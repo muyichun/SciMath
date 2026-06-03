@@ -9,8 +9,8 @@ extra:
 identity:
   author: xujing
   label:
-    en_US: Evaluate Math Expression
-    zh_Hans: 计算数学表达式
+    en_US: Evaluate Math Expression（SymPy）
+    zh_Hans: 计算数学表达式（SymPy）
   name: eval_expression
 parameters:
 - form: llm
