@@ -1,68 +1,74 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
-
 > Author: **xujing**
 
-## What this is
+这份文件是给 Claude Code 的项目说明，用于理解本仓库的结构与开发规范。
 
-A [Dify](https://dify.ai) plugin that exposes math tools including `eval_expression` (NumExpr-based numeric evaluator) and a full suite of SymPy symbolic computation tools. Created and maintained by xujing, distributed via the Dify Marketplace.
+## 项目简介
 
-## Running and developing
+SciMath 是 xujing 独立开发的 [Dify](https://dify.ai) 数学计算插件。插件对外暴露一组数学工具，覆盖数值计算（NumExpr）和符号计算（SymPy）两个方向，解决 LLM 在精确数学计算上不可靠的问题。插件可通过 Dify Marketplace 分发。
 
-Dependencies are managed with `uv`:
+## 运行与开发
+
+依赖通过 `uv` 管理：
 
 ```bash
-uv sync                # install dependencies into .venv
-uv run python main.py  # start the plugin (connects to remote Dify instance)
+uv sync                # 安装依赖到 .venv
+uv run python main.py  # 启动插件（连接远程 Dify 实例）
 ```
 
-Formatting and linting (from `pyproject.toml`):
+格式化与 Lint（配置见 `pyproject.toml`）：
 
 ```bash
 uv run black . -C -l 100
 uv run ruff check --fix
 ```
 
-## Environment setup
+## 环境配置
 
-Copy `.env.example` to `.env` and fill in the remote Dify debug credentials:
+复制 `.env.example` 为 `.env`，填写远程 Dify 调试凭据：
 
-- `REMOTE_INSTALL_HOST` / `REMOTE_INSTALL_PORT` / `REMOTE_INSTALL_KEY` — connect the plugin to a running Dify instance for live testing.
+- `REMOTE_INSTALL_HOST` / `REMOTE_INSTALL_PORT` / `REMOTE_INSTALL_KEY`
 
-## Architecture
+## 项目结构
 
 ```
-main.py                     # Plugin entrypoint — instantiates Plugin and calls .run()
-manifest.yaml               # Plugin metadata (name, version, runner config, permissions)
+main.py                     # 插件入口，实例化 Plugin 并调用 .run()
+manifest.yaml               # 插件元数据（名称、版本、运行器配置、权限）
 provider/
-  maths.yaml                # Provider identity/label declarations + tool registry
-  maths.py                  # MathsProvider(ToolProvider) — no-op credential validation
+  maths.yaml                # Provider 身份声明 + 工具注册表
+  maths.py                  # MathsProvider(ToolProvider)，凭据校验为 no-op
 tools/
-  eval_expression.yaml/.py  # NumExpr numeric evaluator (original tool)
-  sympy_utils.py            # Shared: parse_expr wrapper, parse_equation, to_latex
-  sympy_solve.yaml/.py      # Solve equations / systems symbolically
-  sympy_diff.yaml/.py       # Differentiation (nth order, any variable)
-  sympy_integrate.yaml/.py  # Definite / indefinite integrals
-  sympy_limit.yaml/.py      # Limits (one-sided, at infinity)
-  sympy_simplify.yaml/.py   # Simplify / factor / expand / apart / trigsimp / …
-  sympy_series.yaml/.py     # Taylor / Maclaurin series expansion
-  sympy_dsolve.yaml/.py     # Solve ODEs with optional initial conditions
+  eval_expression.yaml/.py  # NumExpr 数值计算工具
+  sympy_utils.py            # 共享工具：parse_expr、parse_equation、to_latex
+  sympy_solve.yaml/.py      # 符号求解方程 / 方程组
+  sympy_diff.yaml/.py       # 求导（任意阶、任意变量）
+  sympy_integrate.yaml/.py  # 定积分 / 不定积分
+  sympy_limit.yaml/.py      # 极限（单侧、双侧、趋于无穷）
+  sympy_simplify.yaml/.py   # 化简 / 因式分解 / 展开 / 部分分式 / 三角化简
+  sympy_series.yaml/.py     # 泰勒 / 麦克劳林级数展开
+  sympy_dsolve.yaml/.py     # 常微分方程求解（支持初始条件）
 docs/
-  DEV_LOG.md                # Development log — append an entry after every session
+  DEV_LOG.md                # 开发日志，每次会话结束后追加
 ```
 
-The plugin framework is `dify_plugin`. Each tool lives in `tools/<name>.py` paired with a `tools/<name>.yaml` schema file. The provider in `provider/` groups tools together and declares the plugin identity.
+## 新增工具流程
 
-Adding a new tool requires: a `tools/<name>.py` implementing `Tool._invoke()`, a matching `tools/<name>.yaml`, and registering the yaml in `provider/maths.yaml` under `tools:`.
+新增一个工具需要：
+1. `tools/<name>.py` — 实现 `Tool._invoke()`
+2. `tools/<name>.yaml` — 定义工具 schema（description、identity、parameters）
+3. 在 `provider/maths.yaml` 的 `tools:` 下注册 yaml 路径
 
-All SymPy tools output both `create_text_message` (human-readable text + LaTeX) and `create_json_message` (structured result for downstream use in Dify workflows).
+所有 SymPy 工具同时输出 `create_text_message`（人类可读文本 + LaTeX）和 `create_json_message`（结构化结果）。
 
-## Documentation requirements
+## 文档维护规范
 
-After every coding session that modifies source files, update:
-- `docs/DEV_LOG.md` — append a new entry (see `AGENTS.md` for format)
-- `CLAUDE.md` (this file) — update Architecture if files changed
-- `README.md` — update Features/Usage if new tools were added
+每次修改源文件后，必须同步更新：
 
-See `AGENTS.md` for the full multi-tool (Claude / Codex / Cursor) workflow and conventions.
+| 文件 | 更新时机 | 写什么 |
+|------|---------|--------|
+| `docs/DEV_LOG.md` | 每次有代码改动的会话 | 新增条目：日期、操作者、变更摘要 |
+| `CLAUDE.md`（本文件） | 文件结构或架构有变化时 | 更新项目结构部分 |
+| `README.md` | 新增工具或功能时 | 更新工具列表 |
+
+详细规范见 `AGENTS.md`。

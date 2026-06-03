@@ -4,8 +4,8 @@ extra:
 identity:
   author: xujing
   description:
-    en_US: A tool for scientific maths.
-    zh_Hans: 一个用于科学数学计算的工具。
+    en_US: A scientific math plugin powered by SymPy symbolic computation and NumExpr numeric evaluation.
+    zh_Hans: 一个科学数学计算插件，集成 SymPy 符号计算与 NumExpr 数值计算能力。
   icon: icon.svg
   label:
     en_US: SciMath
