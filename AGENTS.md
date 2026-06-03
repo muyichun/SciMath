@@ -1,5 +1,7 @@
 # AGENTS.md
 
+> Project author: **xujing**
+
 Instructions for all AI coding agents (Claude Code, Codex, Cursor, etc.) working on this repository.
 
 ---
@@ -33,7 +35,7 @@ Append to the top of the file (newest first):
 - `path/to/file.py` — one-line description
 ```
 
-Use the actual date. For agent name use: `Claude Code`, `Codex`, `Cursor`, or `Human`.
+Use the actual date. For agent name use: `Claude Code`, `Codex`, `Cursor`, or `xujing`.
 
 ---
 

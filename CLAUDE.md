@@ -2,9 +2,11 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+> Author: **xujing**
+
 ## What this is
 
-A [Dify](https://dify.ai) plugin that exposes a single tool — `eval_expression` — which evaluates math expressions locally using [NumExpr](https://numexpr.readthedocs.io/). It is packaged and distributed via the Dify Marketplace.
+A [Dify](https://dify.ai) plugin that exposes math tools including `eval_expression` (NumExpr-based numeric evaluator) and a full suite of SymPy symbolic computation tools. Created and maintained by xujing, distributed via the Dify Marketplace.
 
 ## Running and developing
 

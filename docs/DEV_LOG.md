@@ -4,6 +4,22 @@ Entries are newest-first. Each entry records what changed, who made the change, 
 
 ---
 
+## 2026-06-03 — xujing
+
+**Changes:**
+- Unified author to `xujing` across all YAML schemas and MD files
+- Removed `pt_BR` locale entries; only `en_US` and `zh_Hans` are maintained
+- Replaced plugin icon with a clean blue-purple gradient Σ (sigma) SVG
+
+**Files modified:**
+- `tools/eval_expression.yaml` — removed pt_BR, author already xujing
+- `manifest.yaml` — author changed from langgenius to xujing, removed pt_BR
+- `provider/maths.yaml` — author changed from Bowen Liang to xujing, removed pt_BR
+- `_assets/icon.svg` — new clean gradient sigma icon
+- `README.md`, `AGENTS.md`, `docs/DEV_LOG.md` — updated author/attribution to xujing
+
+---
+
 ## 2026-06-01 — Claude Code
 
 **Changes:**
@@ -26,7 +42,7 @@ Entries are newest-first. Each entry records what changed, who made the change, 
 
 ---
 
-## 2024-09-20 — Human (initial commit)
+## 2024-09-20 — xujing (initial commit)
 
 **Changes:**
 - Initial plugin scaffold with single `eval_expression` tool (NumExpr-based numeric evaluator)

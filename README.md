@@ -1,4 +1,6 @@
-# Maths — Dify Plugin
+# SciMath — Dify Plugin
+
+> Author: **xujing**
 
 A [Dify](https://dify.ai) plugin providing precise math tools that cover the cases where LLMs are unreliable: symbolic computation, exact arithmetic, and numeric evaluation.
 
@@ -48,3 +50,7 @@ SymPy tools accept standard mathematical notation:
 ## Development log
 
 See [`docs/DEV_LOG.md`](docs/DEV_LOG.md) for a full history of changes.
+
+## License
+
+Created and maintained by **xujing**.
