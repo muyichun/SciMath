@@ -10,7 +10,7 @@ identity:
   label:
     en_US: SciMath
     zh_Hans: 科学数学工具
-  name: maths
+  name: scimath
   tags:
   - utilities
   - productivity
