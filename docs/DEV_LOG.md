@@ -4,6 +4,16 @@ Entries are newest-first. Each entry records what changed, who made the change, 
 
 ---
 
+## 2026-09-26 — Codex
+
+**Changes:**
+- Clarified the README installation guidance for local development.
+
+**Files modified:**
+- `README.md` — clarified the local-development installation wording
+
+---
+
 ## 2026-06-03 — xujing
 
 **Changes:**

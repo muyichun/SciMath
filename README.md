@@ -34,7 +34,7 @@ All SymPy tools return both:
 
 ## Installation
 
-1. Install **SciMath** from the Dify Plugin Marketplace, or load this directory directly for local development.
+1. Install **SciMath** from the Dify Plugin Marketplace, or load this directory directly when developing locally.
 2. Add the desired tool node to your workflow.
 3. Wire the expression / equation parameter from your LLM node to the tool input.
 
